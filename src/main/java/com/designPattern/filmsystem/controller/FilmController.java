@@ -34,6 +34,12 @@ public class FilmController {
 
     Logger logger = Logger.getLogger(this.getClass().getName());
 
+    /**
+     * 用于请求电影列表
+     * @param request 此时session中应当包含年龄
+     * @param model 用于thymeleaf解析
+     * @return 跳转请求
+     */
     @PostMapping("/list")
     public String getFilmList(HttpServletRequest request, Model model){
         logger.info("2020144131汪亦涵：用户正在请求电影列表");
@@ -41,6 +47,13 @@ public class FilmController {
         return "movieChoice";
     }
 
+    /**
+     * 年龄验证
+     * @param img 人脸图像
+     * @param id 用于身份验证
+     * @param request 用于获取session并设置参数
+     * @param response 用于proxy转发请求
+     */
     @PostMapping("/verify")
     public void ageVerify(@RequestParam("img") String img,@RequestParam("id") String id, HttpServletRequest request, HttpServletResponse response){
         request.getSession().setAttribute("id",id);
@@ -48,6 +61,13 @@ public class FilmController {
         filmProxy.ageVerify(img,request,response);
     }
 
+    /**
+     * 用于获取电影资源，同时计时器也会在此处启动
+     * @param filmId 电影Id
+     * @param model 用于thymeleaf解析
+     * @param request 用于获取session并设置参数
+     * @return 跳转请求
+     */
     @PostMapping("/filmGet")
     public String getFilm(@RequestParam("filmId") String filmId,Model model,HttpServletRequest request){
         Film film = filmService.selectFilmById(Integer.valueOf(filmId));
@@ -58,6 +78,11 @@ public class FilmController {
         return "player";
     }
 
+    /**
+     * 电影结束触发的动作
+     * @param request 用于获取session
+     * @return 转发请求
+     */
     @GetMapping("filmOver")
     public String filmOver(HttpServletRequest request){
         logger.info("2020144131汪亦涵：用户正在请求结束电影会话");

@@ -4,15 +4,13 @@ import com.designPattern.filmsystem.adapter.ApiAdapterImpl;
 import com.designPattern.filmsystem.adapter.components.impl.AgeVerifyImpl;
 import com.designPattern.filmsystem.adapter.components.impl.ParentImpl;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * @author 汪亦涵
  * @date 2022/10/21 16:48
  * @project filmSystem
  * @Title ApiTest
- * @description TODO
+ * @description 用于测试Api接口
  */
 
 // @RunWith(SpringJUnit4ClassRunner.class)

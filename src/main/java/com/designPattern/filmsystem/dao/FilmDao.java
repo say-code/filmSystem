@@ -41,6 +41,11 @@ public class FilmDao {
           return filmsCopy;
      }
 
+     /**
+      * 根据Id查找影片
+      * @param filmId 影片的ID
+      * @return 影片bean
+      */
      public Film selectFilmById(Integer filmId){
           List<Film> films = FilmListMock.FILM_LIST;
           for (Film film: films) {

@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @date 2022/10/22 1:50
  * @project filmSystem
  * @Title filmService
- * @description 电影查询 服务层
+ * @description 电影查询 服务层 位于proxy的下层 用于封装针对数据库的操作
  */
 @Service
 public class FilmService {
@@ -26,6 +26,7 @@ public class FilmService {
     private FilmDao filmDao = new FilmDao();
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
+
 
     private String ageToType(Integer age){
         if ( age< AgeLimit.FIRST_LIMIT ){
