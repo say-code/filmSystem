@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>player</title>
+</head>
+<body>
+<video controls style="width: 1000px;height: 750px; margin-left: auto;">
+  <!--/*@thymesVar id="filmUrl" type="java.lang.String"*/-->
+  <source th:src="${filmUrl}" type="video/mp4">
+</video>
+<form method="get" action="/film/filmOver">
+    <input type="submit" value="结束观影">
+</form>
+
+</body>
+</html>

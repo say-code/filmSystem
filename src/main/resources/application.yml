@@ -1,0 +1,9 @@
+
+spring:
+  thymeleaf:
+    #文件存放路径前缀
+    prefix: classpath:/templates/
+    encoding: UTF-8
+    #文件类型
+    mode: html
+    cache: false

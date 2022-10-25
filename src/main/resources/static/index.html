@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<form method="post" action="/film/verify">
+    √已经获取您的人脸<input value="张越.jpg" name="img" style="display: none;"/>
+    <br/><br/>
+    请填写您的身份证：<input value="330181200205250018" name="id">
+  <input type="submit" value="提交">
+</form>
+<p>
+    Tips：人脸数据已经默认使用mock，故跳过该环节，希望调整人脸年龄请移步filmSystem.mock.apiMock.AgeVerifyMock
+</p>
+</body>
+</html>

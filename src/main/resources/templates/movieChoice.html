@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>movieChoice</title>
+</head>
+<body>
+<form method="post" action="/film/filmGet">
+  <!--/*@thymesVar id="film" type="com.designPattern.filmsystem.model.Film"*/-->
+  <ul th:each="film : ${filmList}">
+    <input type="radio" th:text="${film.getName()}" name="filmId" th:value="${film.getId()}"/>
+  </ul>
+  <input type="submit" value="开始观影">
+</form>
+
+
+</body>
+</html>
