@@ -91,6 +91,6 @@ public class FilmController {
             logger.info("2020144131汪亦涵：用户年龄小于设定年龄，需要通知家长");
             filmTimer.timeStop(request.getSession());
         }
-        return "index";
+        return "README";
     }
 }

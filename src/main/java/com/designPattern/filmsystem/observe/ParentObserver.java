@@ -5,7 +5,6 @@ import com.designPattern.filmsystem.adapter.components.impl.SendEmailImpl;
 import com.designPattern.filmsystem.model.Parent;
 import lombok.AllArgsConstructor;
 
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
