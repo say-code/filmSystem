@@ -15,7 +15,7 @@ import java.util.List;
  * @date 2022/10/25 12:18
  * @project filmSystem
  * @Title FilmTimer
- * @description TODO
+ * @description 被观察者，统计用户观影时长，同时发布相应信息
  */
 public class FilmTimer {
     /**

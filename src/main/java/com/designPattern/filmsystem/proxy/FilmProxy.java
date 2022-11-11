@@ -18,11 +18,11 @@ import java.util.logging.Logger;
  * @project filmSystem
  * @Title filmProxy
  * @description 基于代理模式的的proxy类，
- * 主要目的是代理各个接口以及数据库查找服务，隐藏真实api接口。
+ * 主要目的是限制用户访问，代理各个接口。
  */
 
 
-public class FilmProxy {
+public class FilmProxy implements IFilmProxy{
 
     private final Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -36,17 +36,15 @@ public class FilmProxy {
      */
     private final IApiAdapter apiAdapter = new ApiAdapterImpl();
 
+    @Override
     public List<Film> getFilmList(HttpServletRequest request){
         Integer age = (Integer) request.getSession().getAttribute("age");
         return filmService.getFilmList(age);
     }
 
-    /**
-     * 代理年龄数据接口，请求年龄数据并转发请求，获取电影数据
-     * @param img 人脸图片
-     * @param request 从前端传入的请求，用于获取session并设置数据
-     * @param response 用于请求转发
-     */
+
+
+    @Override
     public void ageVerify(String img, HttpServletRequest request, HttpServletResponse response){
         //请求年龄
         Integer age= apiAdapter.verify(img).getData();
@@ -60,5 +58,6 @@ public class FilmProxy {
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
+
     }
 }

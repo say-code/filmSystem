@@ -18,10 +18,11 @@
 <p>（2）完成相应代码并测试；</p>
 <p>（3）年龄、影片类型可变动；</p>
 <p>要求：设计具有可复用性、可扩展性。</p>
-<h2>设计思路</h2>
+<h2>系统设计</h2>
+<h3>设计思路</h3>
 <ul><li>
 <p>代理模式</p>
-<p>后端应当向用户隐藏数据库调用的相关服务，以及api调用的相关服务，防止用户越级控制数据库，出现安全隐患，同时为了减少前端请求次数，实现一次请求完成复数个服务，故利用代理统筹api和数据库服务，增强用户体验。</p>
+<p>后端去限制用户访问，再题目中提到，要限制12岁以下人群访问普通电影，故在此处应当进行代理，同时为了减少前端请求次数，实现一次请求完成复数个服务，故利用代理统筹api和数据库服务，增强用户体验。</p>
 </li>
 <li>
 <p>观察者模式</p>
@@ -33,11 +34,16 @@
 <p>​</p>
 </li>
 </ul>
-<h2>类图</h2>
-<p><img src='./designer.png' alt='' /></p>
-<p></p>
-<h2>项目结构</h2>
-<pre><code>
+<h3>类图</h3>
+<p><img src='./img/designer.png' alt='' /></p>
+<h4>适配器模块</h4>
+<p><img src='./img/Package%20adapter.png' alt='' /></p>
+<h4>代理模块</h4>
+<p><img src='./img/proxy.png' alt='' /></p>
+<h4>观察者模式</h4>
+<p><img src='./img/observe.png' alt='' /></p>
+<h3>项目结构</h3>
+<pre><code class='language-java' lang='java'>
 -- filmSystem
  |-- adapter               适配器模块核心类
     |-- components             适配器组件
@@ -53,9 +59,8 @@
  |-- service               服务层 集成Dao
  |-- test				  测试模块 存放测试类
 </code></pre>
-<p></p>
-<h2>整体流程</h2>
-<ol><li>
+<h3>整体流程</h3>
+<ol start='' ><li>
 用户希望看电影访问网站</li>
 <li>
 用户验证头像信息，输入身份证，前端将图片、身份证传给后端</li>
@@ -70,10 +75,31 @@
 <li>
 观察者模块增加父母观察者，并发布用户观影名及时长</li>
 </ol>
-<p></p>
 <h2>快速启动</h2>
-<p>	git项目后，通过maven安装相应模块。</p>
-<p>	启动后访问 <a href='http://127.0.0.1:8080' target='_blank' >http://127.0.0.1:8080</a></p>
-<p>	希望修改年龄请于filmSystem.mock.apiMock.AgeVerifyMock中进行</p>
+<p>​	git项目后，通过maven安装相应模块。</p>
+<p>​	启动后访问 <a href='http://127.0.0.1:8080' target='_blank' >http://127.0.0.1:8080</a></p>
+<p>​	希望修改年龄请于filmSystem.mock.apiMock.AgeVerifyMock</p>
+<p></p>
+<h2>可拓展性</h2>
+<ul><li>
+<p>适配器模式</p>
+<p>为每个第三方接口，以及适配器定义了接口层，只要实现接口层，即可实现替换，同时规范了数据传输的格式ApiMessage，同时采用了泛型保证了apiMessage的灵活性</p>
+</li>
+<li>
+<p>观察者模式</p>
+<p>被观察者FilmTimer的作用是计算观影时间并发布通知，它不应当去关心被发布通知给怎样的人，故设计了IOberServer，所有实现了该接口的实体类都可以被FilmTimer订阅并发布</p>
+</li>
+<li>
+<p>MVC模式</p>
+<p>整体采用MVC模式编写，事务细粒度较高，耦合度低，方便代码的维护于拓展</p>
+</li>
+</ul>
+<h2>可复用性</h2>
+<ul><li>
+代码遵循合成复用原则，单一职责原则，降低代码耦合度，增强复用性</li>
+<li>
+ApiMessage采用泛型编写，令该类能更换主体，并被多次复用</li>
+</ul>
+<p></p>
 </body>
 </html>

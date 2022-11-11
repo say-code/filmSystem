@@ -13,7 +13,7 @@ import java.util.Date;
  * @date 2022/10/25 12:02
  * @project filmSystem
  * @Title ParentObserver
- * @description TODO
+ * @description 观察者父母实现类
  */
 @AllArgsConstructor
 public class ParentObserver implements IObserver{
