@@ -29,7 +29,7 @@ public class FilmService {
 
 
     private String ageToType(Integer age){
-        if ( age< AgeLimit.FIRST_LIMIT ){
+        if ( age < AgeLimit.FIRST_LIMIT ){
             logger.info("2020144131汪亦涵：年龄为"+age+"，只能看儿童电影");
             return "cartoon";
         }else{

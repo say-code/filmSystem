@@ -15,6 +15,6 @@ import java.util.Map;
 public class AgeVerifyMock {
     public final static Map<String, Object> DATA= new HashMap<String, Object>(){{
         put("code",200);
-        put("data", 19);
+        put("data", 8);
     }};
 }
